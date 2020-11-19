@@ -1,0 +1,48 @@
+version: '3.7'
+services:
+  iris1:
+    image: containers.intersystems.com/intersystems/iris:2020.3.0.221.0
+    init: true
+    command: --key /ISC/iris.key
+    hostname: iris1
+    environment:
+     - ISC_DATA_DIRECTORY=/ISC/iris.sys.d/sys1
+     - ISC_CPF_MERGE_FILE=/ISC/CPF2merge-master-instance.conf
+    volumes:
+     - ./:/ISC:delegated
+    ports:
+      - 9011:1972
+      - 9012:52773
+
+  iris2:
+    image: containers.intersystems.com/intersystems/iris:2020.3.0.221.0
+    command: --key /ISC/iris.key --before 'sleep 60'
+    init: true
+    hostname: iris2
+    environment:
+     - ISC_DATA_DIRECTORY=/ISC/iris.sys.d/sys2
+     - ISC_CPF_MERGE_FILE=/ISC/CPF2merge-data-instance.conf
+    volumes:
+     - ./:/ISC:delegated
+    depends_on: 
+      - iris1
+    ports:
+      - 9021:1972
+      - 9022:52773
+
+
+  iris3:
+    image: containers.intersystems.com/intersystems/iris:2020.3.0.221.0
+    command: --key /ISC/iris.key --before 'sleep 60'
+    init: true
+    hostname: iris3
+    environment:
+     - ISC_DATA_DIRECTORY=/ISC/iris.sys.d/sys3
+     - ISC_CPF_MERGE_FILE=/ISC/CPF2merge-data-instance.conf
+    volumes:
+     - ./:/ISC:delegated
+    depends_on: 
+      - iris1
+    ports:
+      - 9031:1972
+      - 9032:52773
