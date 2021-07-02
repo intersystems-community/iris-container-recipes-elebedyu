@@ -23,8 +23,8 @@ networks:
 
 services:
   iris1:
-    image: containers.intersystems.com/intersystems/iris:2020.3.0.221.0
-    command: [ "-b /home/irisowner/irissys/startISCAgent.sh 2188", "--key", "/ISC/iris.key"]
+    image: containers.intersystems.com/intersystems/iris:2021.1.0.215.0
+    command: --key /ISC/iris.key
     labels:
       - "traefik.http.routers.iris1-m.rule=Host(`iris1-m.docker.localhost`)"
     hostname: iris1
@@ -42,8 +42,8 @@ services:
       - ./:/ISC
 
   iris2:
-    image: containers.intersystems.com/intersystems/iris:2020.3.0.221.0
-    command: ["-b /home/irisowner/irissys/startISCAgent.sh 2188", "--key", "/ISC/iris.key"]
+    image: containers.intersystems.com/intersystems/iris:2021.1.0.215.0
+    command: --key /ISC/iris.key --before 'sleep 60'
     labels:
       - "traefik.http.routers.iris2-m.rule=Host(`iris2-m.docker.localhost`)"
     hostname: iris2
@@ -63,7 +63,7 @@ services:
       - iris1
 
   arbiter:
-    image: containers.intersystems.com/intersystems/arbiter:2020.3.0.221.0
+    image: containers.intersystems.com/intersystems/arbiter:2021.1.0.215.0
     networks:
       iris-net:
         ipv4_address: 10.0.0.13
