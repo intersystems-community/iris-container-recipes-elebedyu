@@ -26,7 +26,6 @@ services:
     image: containers.intersystems.com/intersystems/iris:2021.1.0.215.0
     command: --key /ISC/iris.key
     hostname: iris1
-    init: true
     networks:
       iris-net:
         ipv4_address: 10.0.0.11
@@ -43,7 +42,6 @@ services:
     image: containers.intersystems.com/intersystems/iris:2021.1.0.215.0
     command: --key /ISC/iris.key --before 'sleep 60'
     hostname: iris2
-    init: true
     networks:
       iris-net:
         ipv4_address: 10.0.0.12
@@ -63,5 +61,4 @@ services:
     networks:
       iris-net:
         ipv4_address: 10.0.0.13
-    command: ["/usr/local/etc/irissys/startISCAgent.sh 2188"]
     hostname: arbiter
