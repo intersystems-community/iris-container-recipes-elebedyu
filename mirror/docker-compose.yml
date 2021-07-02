@@ -1,4 +1,4 @@
-version: '3.7'
+version: '2.4'
 # This compose runs 3 services: 
 # - 2 x IRIS instances and 
 # - 1 x Arbiter
@@ -25,8 +25,6 @@ services:
   iris1:
     image: containers.intersystems.com/intersystems/iris:2021.1.0.215.0
     command: --key /ISC/iris.key
-    labels:
-      - "traefik.http.routers.iris1-m.rule=Host(`iris1-m.docker.localhost`)"
     hostname: iris1
     init: true
     networks:
@@ -44,8 +42,6 @@ services:
   iris2:
     image: containers.intersystems.com/intersystems/iris:2021.1.0.215.0
     command: --key /ISC/iris.key --before 'sleep 60'
-    labels:
-      - "traefik.http.routers.iris2-m.rule=Host(`iris2-m.docker.localhost`)"
     hostname: iris2
     init: true
     networks:
