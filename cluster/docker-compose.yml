@@ -1,7 +1,7 @@
 version: '3.7'
 services:
   iris1:
-    image: containers.intersystems.com/intersystems/iris:2020.3.0.221.0
+    image: containers.intersystems.com/intersystems/iris:2021.1.0.215.0
     init: true
     command: --key /ISC/iris.key
     hostname: iris1
@@ -15,7 +15,7 @@ services:
       - 9012:52773
 
   iris2:
-    image: containers.intersystems.com/intersystems/iris:2020.3.0.221.0
+    image: containers.intersystems.com/intersystems/iris:2021.1.0.215.0
     command: --key /ISC/iris.key --before 'sleep 60'
     init: true
     hostname: iris2
@@ -32,7 +32,7 @@ services:
 
 
   iris3:
-    image: containers.intersystems.com/intersystems/iris:2020.3.0.221.0
+    image: containers.intersystems.com/intersystems/iris:2021.1.0.215.0
     command: --key /ISC/iris.key --before 'sleep 60'
     init: true
     hostname: iris3
