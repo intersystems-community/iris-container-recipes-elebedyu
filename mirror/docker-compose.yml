@@ -23,7 +23,7 @@ networks:
 
 services:
   iris1:
-    image: containers.intersystems.com/intersystems/iris:2021.1.0.215.0
+    image: containers.intersystems.com/intersystems/iris:2022.1.0.209.0
     command: --key /ISC/iris.key
     hostname: iris1
     networks:
@@ -39,7 +39,7 @@ services:
       - ./:/ISC
 
   iris2:
-    image: containers.intersystems.com/intersystems/iris:2021.1.0.215.0
+    image: containers.intersystems.com/intersystems/iris:2022.1.0.209.0
     command: --key /ISC/iris.key --before 'sleep 60'
     hostname: iris2
     networks:
