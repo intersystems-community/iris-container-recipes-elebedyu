@@ -1,0 +1,5 @@
+Windows Docker Desjktop seem sto have a problem creating this DIRECTORY (!)
+
+ [ERROR] Command "iris start IRIS quietly" exited with status 256
+ 09/23/22-15:37:07:325 (395) 3 [Utility.Event] Error while moving data directories 
+ ERROR #5001: Cannot create target: /ISC/iris.sys.d/
