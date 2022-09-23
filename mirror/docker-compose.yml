@@ -24,7 +24,7 @@ networks:
 services:
   iris1:
     image: containers.intersystems.com/intersystems/iris:2022.1.0.209.0
-    command: --key /ISC/iris.key
+    command: --key /ISC/iris.key --check-caps false
     hostname: iris1
     networks:
       iris-net:
@@ -40,7 +40,7 @@ services:
 
   iris2:
     image: containers.intersystems.com/intersystems/iris:2022.1.0.209.0
-    command: --key /ISC/iris.key --before 'sleep 60'
+    command: --key /ISC/iris.key --before 'sleep 60' --check-caps false
     hostname: iris2
     networks:
       iris-net:
