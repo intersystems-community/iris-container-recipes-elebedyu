@@ -57,7 +57,7 @@ services:
       - iris1
 
   arbiter:
-    image: containers.intersystems.com/intersystems/arbiter:2021.1.0.215.0
+    image: containers.intersystems.com/intersystems/arbiter:2022.1.0.209.0
     networks:
       iris-net:
         ipv4_address: 10.0.0.13
